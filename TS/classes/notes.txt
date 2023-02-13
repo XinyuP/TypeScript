@@ -96,6 +96,15 @@ console.log(counter.#value);
 
 
 
+///////////////////////////////////////////////////////////
+
+getters and setters
+
+// getter
+get fullName() {
+    return `${this.first} ${this.last}`
+}
+
 
 
 
