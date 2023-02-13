@@ -111,7 +111,9 @@ abstract class Cat {
  */
 
 // with abstract, I can no longer create a new instance of cat
-new Cat(); // error: Cannot create an instance of an abstract class
+// new Cat(); // error: Cannot create an instance of an abstract class
+
+
 
 
 

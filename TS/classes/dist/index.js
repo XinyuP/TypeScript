@@ -91,7 +91,7 @@ class Cat {
  * be implemented by a clild class
  */
 // with abstract, I can no longer create a new instance of cat
-new Cat(); // error: Cannot create an instance of an abstract class
+// new Cat(); // error: Cannot create an instance of an abstract class
 // this is a class with functionality, interface cannot do things like this, it solely describing the shape of an object
 // abstract class has functionality, data, but it also says: btw, you must implement the abstract getPay() method to extend this class
 // it enforcing some type of stuff, it also adds functionality in
