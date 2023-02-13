@@ -1,27 +1,41 @@
 "use strict";
+const todos = [];
 // document; // TypeScript automatically knows about the document object and its type
 const btn = document.getElementById('btn');
 const input = document.getElementById('todoinput');
 // const form = document.querySelector("#todoform")
 const form = document.querySelector('form');
-const list = document.getElementById("todolist");
+const list = document.getElementById('todolist');
+// {
+//     text: "walk the dog",
+//     completed: false,
+// }
 const handleSubmit = (e) => {
+    //TypeScript does not know the type of e here
     e.preventDefault();
-    const newTodoText = input.value;
-    const newLI = document.createElement("li");
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
+    const newTodo = {
+        text: input.value,
+        completed: false,
+    };
+    createTodo(newTodo);
+    todos.push(newTodo);
+    input.value = '';
+};
+const createTodo = (todo) => {
+    const newTodoText = todo.text;
+    const newLI = document.createElement('li');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
     newLI.append(newTodoText);
     newLI.append(checkbox);
     list.append(newLI);
-    input.value = "";
 };
-form.addEventListener("submit", handleSubmit);
+form.addEventListener('submit', handleSubmit);
 // form.addEventListener("submit", (e) => {
 //     e.preventDefault();
 //     console.log("submit")
 // })
-// TypeScript can figure out the type of e by itself when we has an inline anonymous function 
+// TypeScript can figure out the type of e by itself when we has an inline anonymous function
 ///////////////////////////////////////////////////////////////////
 // btn.addEventListener('click', () => {
 // 	// input.value
