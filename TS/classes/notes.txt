@@ -1,6 +1,7 @@
 classes are templates for creating objects in JS
 
-They contain a few different important pieces which allow for creation and extension of customized and nicely organized objects
+They contain a few different important pieces which allow for creation 
+and extension of customized and nicely organized objects
 
 constructors
 class fields
@@ -28,7 +29,7 @@ we don't instantiate something from a type
 but with classes, we can create an object from that pattern 
 
 
-///////////////////////////////////////////////////////////
+----------------------------------------------------------
 
 constructors:
 
@@ -52,8 +53,7 @@ const player2 = new Player("charlie", "brown");
 
 
 
-
-////////////////////////////////////////////////////////
+----------------------------------------------------------
 
 class fields:
 
@@ -61,8 +61,6 @@ In any object-oriented programming language, classes can have private and public
 Fields are nothing but variables that hold the information. 
 There are two types of fields in an object-oriented programming language 
 i.e, instance fields and static fields
-
-
 
 
 Private Instance fields: By default, all the properties of a Class are public and can be 
@@ -94,9 +92,7 @@ counter.increment();
 console.log(counter.#value);
 
 
-
-
-///////////////////////////////////////////////////////////
+----------------------------------------------------------
 
 getters and setters
 
@@ -105,7 +101,27 @@ get fullName() {
     return `${this.first} ${this.last}`
 }
 
+// setter
+set score(newScore) {
+    if (newScore < 0) {
+        throw new Error('Score must be positive!');
+    }
+    this.#score = newScore;
+}
 
+----------------------------------------------------------
+
+"static" 
+
+put in front of a property or method
+
+--> tell JS that this property or method exists on the class itself and is not 
+gonna exist on each individual instance 
+
+
+** allow us to group functionality in with the class that doesn't have anything to do with 
+a particular instance, but still maybe has to do with the class itself
+often will be some creation method or helper that will create a new instance or multiple instances for you 
 
 
 

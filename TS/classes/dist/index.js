@@ -1,5 +1,14 @@
 class Player {
-	// --------- field ------------//
+    // --------- static ----------- //
+    static description = "Player In The Game";
+    // this will not exist on individual instances
+    // only exist on the player class
+    static randdomPlayer() {
+        return new Player("Tony", "Robert")
+    }
+
+
+	// --------- field ------------ //
 	// on every instance of player:
 	#score = 0; // private --> only usable inside of the Player class
 	#numLives = 10;
