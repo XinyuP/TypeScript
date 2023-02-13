@@ -77,15 +77,20 @@ class Player {
 
 // ---------- inheritance ---------- //
 // extends from parent class
-// we can add on different property 
+// we can add on different property
 class AdminPlayer extends Player {
-    isAdmin = true;
+	// Must call super constructor in derived class before accessing 'this'
+	// or returning from derived constructor
+	constructor(first, last, powers) {
+		super(first, last);
+		this.powers = powers;
+	}
+	isAdmin = true;
 }
 
-const admin = new AdminPlayer();
-
-
-
+const admin = new AdminPlayer('blaire', 'pang'); 
+const admin2 = new AdminPlayer(['delete', 'restore']); // wrong: first: ['delete', 'restore']
+const admin3 = new AdminPlayer('blaire', 'pang', ['delete', 'restore']);
 
 
 
