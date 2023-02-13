@@ -97,7 +97,6 @@ function printDoubleLength2(thing: lengthy): number {
 	return thing.length * 2;
 }
 
-
 // --------------- default type parameter ---------------- //
 
 function makeEmptyList<T = number>(): T[] {
@@ -107,28 +106,28 @@ function makeEmptyList<T = number>(): T[] {
 const strings = makeEmptyList(); // by default: const strings: number[]
 const bools = makeEmptyList<boolean>(); // by default: const strings: number[]
 
+// ---------------- generic classes ---------------- //
 
+interface Song {
+	title: string;
+	artist: string;
+}
 
+interface Video {
+	title: string;
+	creator: string;
+	resolution: string;
+}
 
+class PlayList<T> {
+	public queue: T[] = [];
+	add(el: T) {
+		this.queue.push(el);
+	}
+}
 
+const songs = new PlayList<Song>();
+songs.add();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const videos = new PlayList<Video>();
+videos.add();

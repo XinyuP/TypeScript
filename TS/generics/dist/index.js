@@ -73,3 +73,15 @@ function makeEmptyList() {
 }
 const strings = makeEmptyList(); // by default: const strings: number[]
 const bools = makeEmptyList(); // by default: const strings: number[]
+class PlayList {
+    constructor() {
+        this.queue = [];
+    }
+    add(el) {
+        this.queue.push(el);
+    }
+}
+const songs = new PlayList();
+songs.add();
+const videos = new PlayList();
+videos.add();
