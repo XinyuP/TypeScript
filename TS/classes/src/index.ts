@@ -96,3 +96,84 @@ class Jacket implements Colorful, Printable {
 
 const bike1 = new Bike('red');
 const jacket1 = new Jacket('Prada', 'black');
+
+
+
+
+
+// --------------- abstract class ------------------ //
+abstract class Cat {
+
+}
+/**
+ * what we do with abstract class is that we define a pattern/methods that must
+ * be implemented by a clild class
+ */
+
+// with abstract, I can no longer create a new instance of cat
+new Cat(); // error: Cannot create an instance of an abstract class
+
+
+
+// this is a class with functionality, interface cannot do things like this, it solely describing the shape of an object
+// abstract class has functionality, data, but it also says: btw, you must implement the abstract getPay() method to extend this class
+// it enforcing some type of stuff, it also adds functionality in
+// like hybrid
+abstract class Employee {
+    constructor(public first: string, public last: string) { }
+    abstract getPay(): number;
+    // this method does exist here, it is just saying that it needs to exist in any class that extends Employee
+        
+    // every instance of an employee subclass(FullTimeEmployee, PartTimeEmployee)
+    // anything that implement this class(Employee) must have a method called getPay()
+
+    greet() {
+        console.log("hello")
+    }
+}
+
+// I can no longer instantiate any instance of employee itself
+
+
+// Employee - FullTimeEmployee - PartTimeEmployee
+
+// in order to be an Employee or in order to implement or extends this class 
+// you must have the abstract method 
+
+
+
+class FullTimeEmployee extends Employee {
+    constructor(first: string, last: string, private salary: number) {
+        super(first, last);
+    }
+    getPay(): number {
+        return this.salary;
+    }
+}
+
+
+class PartTimeEmployee extends Employee {
+    constructor(first: string, last: string, private hourlyRate: number, private hoursWorked: number) {
+        super(first, last);
+    }
+    getPay(): number {
+        return this.hourlyRate * this.hoursWorked;
+    }
+}
+
+// They are still inheriting functionality
+// but thet also inherit a constraint or a rule that they must follow
+
+
+const betty = new FullTimeEmployee("Betty", "White", 100000)
+console.log(betty.getPay())
+
+const bill = new PartTimeEmployee("bill", "White", 20, 1000)
+console.log(bill.getPay())
+
+
+
+
+
+
+
