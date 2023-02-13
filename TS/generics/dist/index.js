@@ -26,7 +26,7 @@ function booleanIdentity(item) {
 function identity(item) {
     return item;
 }
-// we can call Type whatever we want 
+// we can call Type whatever we want
 function identity2(item) {
     return item;
 }
@@ -37,9 +37,15 @@ function identity4(item) {
     return item;
 }
 // we established a relationship here --> whatever input type is, it will also be the return type
-// I can customize this identity function to work with different types 
+// I can customize this identity function to work with different types
 // It's a generic version that just says some type
 identity('blaire'); // automatically know it will return a
 identity(true);
 identity(7);
 identity({ name: 'oreo', breed: 'american short hair' });
+// ------------- another generic function ---------------- //
+function getRandomElement(list) {
+    const randIdx = Math.floor(Math.random() * list.length); // Math.random() returns a number from 0 to <1
+    return list[randIdx];
+}
+console.log(getRandomElement(['a', 'b', 'c']));
