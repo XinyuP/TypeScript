@@ -57,9 +57,41 @@ const player2 = new Player("charlie", "brown");
 
 class fields:
 
+In any object-oriented programming language, classes can have private and public fields. 
+Fields are nothing but variables that hold the information. 
+There are two types of fields in an object-oriented programming language 
+i.e, instance fields and static fields
 
 
 
+
+Private Instance fields: By default, all the properties of a Class are public and can be 
+modified outside the class. So, in order to declare a private class field, 
+we need to use a # prefix.
+
+class IncrementCounter {
+ 
+    // Private variable
+    #value = 0;
+ 
+    // Public variable
+    Count = 0;
+ 
+    Increment() {
+        this.#value++;
+    }
+}
+ 
+const counter = new IncrementCounter();
+ 
+// Raises an error
+console.log(counter.#value);
+ 
+// Calling the increment function
+counter.increment();
+ 
+// Printing the private variable value
+console.log(counter.#value);
 
 
 
