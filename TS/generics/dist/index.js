@@ -67,3 +67,9 @@ function printDoubleLength(thing) {
 function printDoubleLength2(thing) {
     return thing.length * 2;
 }
+// --------------- default type parameter ---------------- //
+function makeEmptyList() {
+    return [];
+}
+const strings = makeEmptyList(); // by default: const strings: number[]
+const bools = makeEmptyList(); // by default: const strings: number[]

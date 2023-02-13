@@ -90,9 +90,45 @@ interface lengthy {
 }
 
 function printDoubleLength<T extends lengthy>(thing: T): number {
-    return thing.length * 2;
+	return thing.length * 2;
 }
 
 function printDoubleLength2(thing: lengthy): number {
-    return thing.length * 2;
+	return thing.length * 2;
 }
+
+
+// --------------- default type parameter ---------------- //
+
+function makeEmptyList<T = number>(): T[] {
+	return [];
+}
+
+const strings = makeEmptyList(); // by default: const strings: number[]
+const bools = makeEmptyList<boolean>(); // by default: const strings: number[]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
