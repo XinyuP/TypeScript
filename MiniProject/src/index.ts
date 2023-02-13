@@ -57,15 +57,6 @@ form.addEventListener('submit', handleSubmit);
 
 
 
-
-
-
-
-
-
-
-
-
 // form.addEventListener("submit", (e) => {
 //     e.preventDefault();
 //     console.log("submit")
