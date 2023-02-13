@@ -1,7 +1,19 @@
 "use strict";
 // document; // TypeScript automatically knows about the document object and its type
 const btn = document.getElementById('btn');
-console.log(btn);
+const input = document.getElementById('todoinput');
+btn.addEventListener('click', () => {
+    // input.value
+    // before using (as HTMLInputElement) --> error: Property 'value' does not exist on type 'HTMLElement'
+    // (input as HTMLInputElement).value
+    alert(input.value);
+    input.value = '';
+    // or we can also do this:
+    input.value;
+});
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 // add ? here so if btn is null, we don't addEventListener
 btn === null || btn === void 0 ? void 0 : btn.addEventListener('click', () => alert('CLICK!'));
 // or:
@@ -15,6 +27,6 @@ const btnn = document.getElementById('btn');
 // Sometimes, we might have more specific info about a value's type, and we want to make sure
 // TypeScript knows it too --> we can assert a value's type by using the 'as' ketword
 // followed by the specific type we want to assert
-let mystery = "Hello world!";
+let mystery = 'Hello world!';
 // const len = mystery.length  //error: 'mystery' is of type 'unknown'
 const len = mystery.length;
