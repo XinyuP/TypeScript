@@ -5,9 +5,19 @@ const input = document.getElementById('todoinput')! as HTMLInputElement;
 // const form = document.querySelector("#todoform")
 const form = document.querySelector('form')!;
 
+const list = document.getElementById("todolist")!;
+
 const handleSubmit = (e: SubmitEvent) => { //TypeScript does not know the type of e here
     e.preventDefault();
-    console.log("submit")
+    const newTodoText = input.value;
+    const newLI = document.createElement("li");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    newLI.append(newTodoText);
+    newLI.append(checkbox);
+    list.append(newLI);
+    input.value = "";
+
 }
 
 form.addEventListener("submit", handleSubmit)
