@@ -16,4 +16,3 @@ const norma: Chicken = {
 // tsc -- watch
 // tsc -w ---> auto compile all the file in the folder
 // use only tsc will compile all the file in the folder 
-

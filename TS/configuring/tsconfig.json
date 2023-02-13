@@ -102,5 +102,7 @@
 	},
 	// files specify an allowlist of file to include in the program
 	// An error occurs if any of the files cannot be found
-	"files": ["index.ts", "farmstand.ts"]
+	//"files": ["src/index.ts", "src/farmstand.ts"]
+  "include": ["src"],
+  "exclude": ["src/dont.ts", "**.test", "node_modules"]
 }
