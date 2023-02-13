@@ -12,6 +12,9 @@ const readTodos = () => {
     return JSON.parse(todosJSON);
 };
 const todos = readTodos();
+const saveTodos = () => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+};
 const handleSubmit = (e) => {
     //TypeScript does not know the type of e here
     e.preventDefault();
@@ -21,7 +24,8 @@ const handleSubmit = (e) => {
     };
     createTodo(newTodo);
     todos.push(newTodo);
-    localStorage.setItem('todos', JSON.stringify(todos));
+    // localStorage.setItem('todos', JSON.stringify(todos));
+    saveTodos();
     input.value = '';
 };
 const createTodo = (todo) => {
@@ -29,6 +33,11 @@ const createTodo = (todo) => {
     const newLI = document.createElement('li');
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
+    checkbox.checked = todo.completed;
+    checkbox.addEventListener('change', () => {
+        todo.completed = checkbox.checked;
+        saveTodos();
+    });
     newLI.append(newTodoText);
     newLI.append(checkbox);
     list.append(newLI);

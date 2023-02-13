@@ -11,12 +11,15 @@ const form = document.querySelector('form')!;
 const list = document.getElementById('todolist')!;
 
 const readTodos = (): Todo[] => {
-    const todosJSON = localStorage.getItem('todos');
-    if (todosJSON === null) return [];
-    return JSON.parse(todosJSON);
-}
+	const todosJSON = localStorage.getItem('todos');
+	if (todosJSON === null) return [];
+	return JSON.parse(todosJSON);
+};
 const todos: Todo[] = readTodos();
 
+const saveTodos = () => {
+	localStorage.setItem('todos', JSON.stringify(todos));
+};
 
 const handleSubmit = (e: SubmitEvent) => {
 	//TypeScript does not know the type of e here
@@ -28,7 +31,8 @@ const handleSubmit = (e: SubmitEvent) => {
 	createTodo(newTodo);
 	todos.push(newTodo);
 
-	localStorage.setItem('todos', JSON.stringify(todos));
+	// localStorage.setItem('todos', JSON.stringify(todos));
+	saveTodos();
 	input.value = '';
 };
 
@@ -37,21 +41,19 @@ const createTodo = (todo: Todo) => {
 	const newLI = document.createElement('li');
 	const checkbox = document.createElement('input');
 	checkbox.type = 'checkbox';
+	checkbox.checked = todo.completed;
+	checkbox.addEventListener('change', () => {
+		todo.completed = checkbox.checked;
+		saveTodos();
+	});
 	newLI.append(newTodoText);
 	newLI.append(checkbox);
 	list.append(newLI);
 };
 
-
-todos.forEach(createTodo)
+todos.forEach(createTodo);
 
 form.addEventListener('submit', handleSubmit);
-
-
-
-
-
-
 
 
 
