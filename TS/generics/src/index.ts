@@ -72,7 +72,8 @@ getRandomElement([1, 2, 3, 4]);
 
 // ------------- generics with multiple types --------------- //
 
-function merge<T, U>(obj1: T, obj2: U) { // infer: function merge<T, U>(obj1: T, obj2: U): T & U
+function merge<T extends object, U extends object>(obj1: T, obj2: U) {
+	// infer: function merge<T, U>(obj1: T, obj2: U): T & U
 	return {
 		...obj1,
 		...obj2,
@@ -80,5 +81,18 @@ function merge<T, U>(obj1: T, obj2: U) { // infer: function merge<T, U>(obj1: T,
 }
 
 const combo = merge({ name: 'blaire' }, { age: 21 });
+// const combo2 = merge({ name: 'blaire' }, 21);
 
 console.log(combo);
+
+interface lengthy {
+	length: number;
+}
+
+function printDoubleLength<T extends lengthy>(thing: T): number {
+    return thing.length * 2;
+}
+
+function printDoubleLength2(thing: lengthy): number {
+    return thing.length * 2;
+}

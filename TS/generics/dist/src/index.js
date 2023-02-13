@@ -59,7 +59,7 @@ function merge(obj1, obj2) {
     return Object.assign(Object.assign({}, obj1), obj2);
 }
 const combo = merge({ name: 'blaire' }, { age: 21 });
-// const combo2 = merge({ name: 'blaire' }, 21);
+const combo2 = merge({ name: 'blaire' }, 21);
 console.log(combo);
 function printDoubleLength(thing) {
     return thing.length * 2;
