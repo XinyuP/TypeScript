@@ -49,3 +49,7 @@ function getRandomElement(list) {
     return list[randIdx];
 }
 console.log(getRandomElement(['a', 'b', 'c']));
+// ----------- inferred generic type parameter ------------- //
+let x = 23;
+getRandomElement(['a', 'b', 'c']);
+getRandomElement([1, 2, 3, 4]);

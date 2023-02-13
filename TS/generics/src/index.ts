@@ -64,3 +64,42 @@ function getRandomElement<T>(list: T[]): T {
 }
 
 console.log(getRandomElement<string>(['a', 'b', 'c']));
+
+// ----------- inferred generic type parameter ------------- //
+let x = 23;
+getRandomElement(['a', 'b', 'c']);
+getRandomElement([1, 2, 3, 4]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
