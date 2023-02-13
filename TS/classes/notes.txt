@@ -125,6 +125,13 @@ often will be some creation method or helper that will create a new instance or 
 
 
 
+--------------------------------------------------------------------
+
+inheritance 
+
+class can inherit from some parent class
+share functionality with another class 
+
 
 
 

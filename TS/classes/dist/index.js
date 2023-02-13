@@ -1,12 +1,11 @@
 class Player {
-    // --------- static ----------- //
-    static description = "Player In The Game";
-    // this will not exist on individual instances
-    // only exist on the player class
-    static randdomPlayer() {
-        return new Player("Tony", "Robert")
-    }
-
+	// --------- static ----------- //
+	static description = 'Player In The Game';
+	// this will not exist on individual instances
+	// only exist on the player class
+	static randdomPlayer() {
+		return new Player('Tony', 'Robert');
+	}
 
 	// --------- field ------------ //
 	// on every instance of player:
@@ -58,8 +57,8 @@ class Player {
 		const [first, last] = newName.split(' ');
 		this.first = first;
 		this.last = last;
-    }
-    
+	}
+
 	//----------------------------//
 
 	taunt() {
@@ -76,6 +75,29 @@ class Player {
 	}
 }
 
+// ---------- inheritance ---------- //
+// extends from parent class
+// we can add on different property 
+class AdminPlayer extends Player {
+    isAdmin = true;
+}
+
+const admin = new AdminPlayer();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 const player1 = new Player('blaire', 'pang');
 console.log(player1.numLives);
 player1.loseLife();
@@ -90,3 +112,4 @@ const player2 = new Player('charlie', 'brown');
 console.log(player2.fullName); // behave like there is a property called fullName --> but it actually computed
 player2.fullName = 'Taylor Swift';
 console.log(player2.fullName);
+*/
