@@ -2,21 +2,21 @@ interface Todo {
 	text: string;
 	completed: boolean;
 }
-const todos: Todo[] = [];
 
 // document; // TypeScript automatically knows about the document object and its type
 const btn = document.getElementById('btn')! as HTMLButtonElement;
 const input = document.getElementById('todoinput')! as HTMLInputElement;
-
 // const form = document.querySelector("#todoform")
 const form = document.querySelector('form')!;
-
 const list = document.getElementById('todolist')!;
 
-// {
-//     text: "walk the dog",
-//     completed: false,
-// }
+const readTodos = (): Todo[] => {
+    const todosJSON = localStorage.getItem('todos');
+    if (todosJSON === null) return [];
+    return JSON.parse(todosJSON);
+}
+const todos: Todo[] = readTodos();
+
 
 const handleSubmit = (e: SubmitEvent) => {
 	//TypeScript does not know the type of e here
@@ -27,6 +27,8 @@ const handleSubmit = (e: SubmitEvent) => {
 	};
 	createTodo(newTodo);
 	todos.push(newTodo);
+
+	localStorage.setItem('todos', JSON.stringify(todos));
 	input.value = '';
 };
 
@@ -40,7 +42,27 @@ const createTodo = (todo: Todo) => {
 	list.append(newLI);
 };
 
+
+todos.forEach(createTodo)
+
 form.addEventListener('submit', handleSubmit);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // form.addEventListener("submit", (e) => {
 //     e.preventDefault();

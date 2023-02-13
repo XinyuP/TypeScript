@@ -1,15 +1,17 @@
 "use strict";
-const todos = [];
 // document; // TypeScript automatically knows about the document object and its type
 const btn = document.getElementById('btn');
 const input = document.getElementById('todoinput');
 // const form = document.querySelector("#todoform")
 const form = document.querySelector('form');
 const list = document.getElementById('todolist');
-// {
-//     text: "walk the dog",
-//     completed: false,
-// }
+const readTodos = () => {
+    const todosJSON = localStorage.getItem('todos');
+    if (todosJSON === null)
+        return [];
+    return JSON.parse(todosJSON);
+};
+const todos = readTodos();
 const handleSubmit = (e) => {
     //TypeScript does not know the type of e here
     e.preventDefault();
@@ -19,6 +21,7 @@ const handleSubmit = (e) => {
     };
     createTodo(newTodo);
     todos.push(newTodo);
+    localStorage.setItem('todos', JSON.stringify(todos));
     input.value = '';
 };
 const createTodo = (todo) => {
@@ -30,6 +33,7 @@ const createTodo = (todo) => {
     newLI.append(checkbox);
     list.append(newLI);
 };
+todos.forEach(createTodo);
 form.addEventListener('submit', handleSubmit);
 // form.addEventListener("submit", (e) => {
 //     e.preventDefault();
