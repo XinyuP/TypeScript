@@ -70,36 +70,15 @@ let x = 23;
 getRandomElement(['a', 'b', 'c']);
 getRandomElement([1, 2, 3, 4]);
 
+// ------------- generics with multiple types --------------- //
 
+function merge<T, U>(obj1: T, obj2: U) { // infer: function merge<T, U>(obj1: T, obj2: U): T & U
+	return {
+		...obj1,
+		...obj2,
+	};
+}
 
+const combo = merge({ name: 'blaire' }, { age: 21 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(combo);

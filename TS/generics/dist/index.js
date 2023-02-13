@@ -53,3 +53,9 @@ console.log(getRandomElement(['a', 'b', 'c']));
 let x = 23;
 getRandomElement(['a', 'b', 'c']);
 getRandomElement([1, 2, 3, 4]);
+// ------------- generics with multiple types --------------- //
+function merge(obj1, obj2) {
+    return Object.assign(Object.assign({}, obj1), obj2);
+}
+const combo = merge({ name: 'blaire' }, { age: 21 });
+console.log(combo);
