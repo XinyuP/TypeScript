@@ -23,7 +23,10 @@ class Player {
     // public readonly first: string;
     // public readonly last: string;
     // private score: number = 0;
-    constructor(first, last, _score) {
+    constructor(first, last, 
+    // private _score: number
+    _score // protected means cannot access _score outside class except in any child classes
+    ) {
         this.first = first;
         this.last = last;
         this._score = _score;
@@ -42,6 +45,18 @@ class Player {
             throw new Error('Score must be positive!');
         }
         this._score = newScore;
+    }
+}
+class SuperPlayer extends Player {
+    constructor() {
+        super(...arguments);
+        this.isAdmin = true;
+    }
+    maxScore() {
+        this._score = 99999;
+        // Property '_score' is private and only accessible within class 'Player'
+        // private doesn't apply to any child classes, anything that inherits or extends that class
+        // we nned to change it to be protected 
     }
 }
 const blaire = new Player('Blaire', 'Pang', 0);

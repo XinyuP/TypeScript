@@ -29,7 +29,8 @@ class Player {
 	constructor(
 		public readonly first: string,
 		public readonly last: string,
-		private _score: number
+		// private _score: number
+        protected _score: number // protected means cannot access _score outside class except in any child classes
 	) {}
 
 	private secretMethod() {
@@ -50,6 +51,21 @@ class Player {
 		this._score = newScore;
 	}
 }
+
+class SuperPlayer extends Player {
+    public isAdmin: boolean = true;
+    maxScore() {
+        this._score = 99999;
+        // Property '_score' is private and only accessible within class 'Player'
+        // private doesn't apply to any child classes, anything that inherits or extends that class
+        // we nned to change it to be protected 
+
+    }
+}
+
+
+
+
 
 const blaire = new Player('Blaire', 'Pang', 0);
 // blaire.secretMethod(); // Property 'secretMethod' is private and only accessible within class 'Player'
