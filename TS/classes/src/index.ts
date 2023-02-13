@@ -22,7 +22,7 @@
 
 //// Parameter Properties shorthand version: ////
 class Player {
-    // public and private keywords only exist in TS
+	// public and private keywords only exist in TS
 	// public readonly first: string;
 	// public readonly last: string;
 	// private score: number = 0;
@@ -30,7 +30,7 @@ class Player {
 		public readonly first: string,
 		public readonly last: string,
 		// private _score: number
-        protected _score: number // protected means cannot access _score outside class except in any child classes
+		protected _score: number // protected means cannot access _score outside class except in any child classes
 	) {}
 
 	private secretMethod() {
@@ -42,9 +42,10 @@ class Player {
 	}
 	get score(): number {
 		return this._score;
-    }
-    
-    set score(newScore: number) { // TS doesn't want to have any return type annotations for setters
+	}
+
+	set score(newScore: number) {
+		// TS doesn't want to have any return type annotations for setters
 		if (newScore < 0) {
 			throw new Error('Score must be positive!');
 		}
@@ -53,20 +54,14 @@ class Player {
 }
 
 class SuperPlayer extends Player {
-    public isAdmin: boolean = true;
-    maxScore() {
-        this._score = 99999;
-        // Property '_score' is private and only accessible within class 'Player'
-        // private doesn't apply to any child classes, anything that inherits or extends that class
-        // we nned to change it to be protected 
-
-    }
+	public isAdmin: boolean = true;
+	maxScore() {
+		this._score = 99999;
+		// Property '_score' is private and only accessible within class 'Player'
+		// private doesn't apply to any child classes, anything that inherits or extends that class
+		// we nned to change it to be protected
+	}
 }
-
-
-
-
-
 const blaire = new Player('Blaire', 'Pang', 0);
 // blaire.secretMethod(); // Property 'secretMethod' is private and only accessible within class 'Player'
 
@@ -74,3 +69,30 @@ blaire.fullName;
 blaire.score = 100;
 // blaire.score = -100;
 
+// ---------------- class implements interface ------------------ //
+interface Colorful {
+	color: string;
+}
+
+interface Printable {
+	print(): void;
+}
+
+class Bike implements Colorful {
+	// Class 'Bike' incorrectly implements interface 'Colorful'. //Property 'color' is missing in type 'Bike' but required in type 'Colorful'.
+	constructor(public color: string) {}
+}
+
+class Jacket implements Colorful, Printable {
+	constructor(public brand: string, public color: string) {}
+
+	print() {
+		console.log(`${this.color} ${this.brand} `);
+	}
+}
+
+// class implements interface:
+// the only rule right now is that the class must have a color property that is a string
+
+const bike1 = new Bike('red');
+const jacket1 = new Jacket('Prada', 'black');

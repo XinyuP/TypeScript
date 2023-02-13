@@ -41,6 +41,7 @@ class Player {
         return this._score;
     }
     set score(newScore) {
+        // TS doesn't want to have any return type annotations for setters
         if (newScore < 0) {
             throw new Error('Score must be positive!');
         }
@@ -56,11 +57,29 @@ class SuperPlayer extends Player {
         this._score = 99999;
         // Property '_score' is private and only accessible within class 'Player'
         // private doesn't apply to any child classes, anything that inherits or extends that class
-        // we nned to change it to be protected 
+        // we nned to change it to be protected
     }
 }
 const blaire = new Player('Blaire', 'Pang', 0);
 // blaire.secretMethod(); // Property 'secretMethod' is private and only accessible within class 'Player'
 blaire.fullName;
 blaire.score = 100;
-// blaire.score = -100;
+class Bike {
+    // Class 'Bike' incorrectly implements interface 'Colorful'. //Property 'color' is missing in type 'Bike' but required in type 'Colorful'.
+    constructor(color) {
+        this.color = color;
+    }
+}
+class Jacket {
+    constructor(brand, color) {
+        this.brand = brand;
+        this.color = color;
+    }
+    print() {
+        console.log(`${this.color} ${this.brand} `);
+    }
+}
+// class implements interface:
+// the only rule right now is that the class must have a color property that is a string
+const bike1 = new Bike('red');
+const jacket1 = new Jacket('Prada', 'black');
