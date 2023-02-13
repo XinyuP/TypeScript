@@ -20,23 +20,41 @@
 
 // by default, in JS and TS, every single property/method in a class is considered public
 
-
-
 //// Parameter Properties shorthand version: ////
 class Player {
+    // public and private keywords only exist in TS
 	// public readonly first: string;
 	// public readonly last: string;
 	// private score: number = 0;
 	constructor(
 		public readonly first: string,
 		public readonly last: string,
-		private score: number
+		private _score: number
 	) {}
 
 	private secretMethod() {
 		console.log('Secret Method!');
 	}
+
+	get fullName(): string {
+		return `${this.first} ${this.last}`;
+	}
+	get score(): number {
+		return this._score;
+    }
+    
+    set score(newScore: number) { // TS doesn't want to have any return type annotations for setters
+		if (newScore < 0) {
+			throw new Error('Score must be positive!');
+		}
+		this._score = newScore;
+	}
 }
 
 const blaire = new Player('Blaire', 'Pang', 0);
 // blaire.secretMethod(); // Property 'secretMethod' is private and only accessible within class 'Player'
+
+blaire.fullName;
+blaire.score = 100;
+// blaire.score = -100;
+
