@@ -1,7 +1,7 @@
 class Player {
 	// on every instance of player:
-	score = 0;
-	numLives = 10;
+	#score = 0; // private --> only usable inside of the Player class
+	#numLives = 10;
 	// syntactic sugar
 	// only allow values that are hard coded
 
@@ -11,20 +11,32 @@ class Player {
 	// constructor will automatically be called
 	constructor(first, last) {
 		this.first = first;
-		this.last = last;
+        this.last = last;
+        this.#secret();
 		// this.score = 0;
 		// this.numLives = 10;
 	}
 	// every time we instantiate a new instance of this class, JS behind the scenes calls this constructor function
 	// we don't execute constructor manually, whenever we instantiate a new player, instantiate is automatically called
 
+	getScore() {
+		return this.#score;
+    }
+    
+    updateScore(newScore) {
+        this.#score = newScore;
+    }
 	taunt() {
 		console.log('BOOYAH!');
 	}
 
 	loseLife() {
-		this.numLives -= 1;
-	}
+		this.#numLives -= 1;
+    }
+    
+    #secret() { // private method
+        console.log("secret!!");
+    }
 }
 
 const player1 = new Player('blaire', 'pang');
