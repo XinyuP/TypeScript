@@ -1,0 +1,38 @@
+JavaScript → imperfect language 
+TypeScript is a language that is built on top of JavaScript with the purpose of 
+helping us avoid the common pitfalls and bugs that arise in JavaScript by adding types. 
+
+TypeScript is a superset of JavaScript. 
+Its goal is to help us find errors before our code ever runs.
+All JavaScript is valid TypeScript 
++ a bunch of extra syntax that is TypeScript specific, that has to do with types. 
+The difference is TypeScript adds on the Type system, special checks to JavaScript 
+
+TypeScript perform something called static checking, 
+which is a feature of a lot of programming languages.
+It basically means that it's going to look to detect any errors in our code without running it. 
+It doesn't actually execute our code. That is the job of JavaScript.
+
+TypeScript itself is a static checker. 
+It looks at our code and it tells us if it sees anything ahead of time before runtime.
+So that's called static checking.
+Now TypeScript is a static type checker, which means that it does this error-checking this pre-runtime, 
+checking on the basis of types or the kinds of data in our program.
+
+
+Why TypeScript?
+it helps us find errors, and most importantly, it helps us find errors before our code even runs. 
+We type our TypeScript code, we look at any errors, 
+hopefully fix any errors that it identifies.
+And then the code is compiled to regular JavaScript that can run in a browser or that Node.js can work with.
+
+TypeScript is there for development purposes, but then it is compiled to JavaScript.
+
+
+TypeScript playground, which is a browser based environment where
+you can get started writing TypeScript immediately without installing anything.
+
+But so much of what we do in TypeScript is not actually executing a file or compiling it, 
+but it's just writing code and getting those errors immediately.
+
+
