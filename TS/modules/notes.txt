@@ -1,0 +1,29 @@
+TypeScript supports modules that allows us to share code between files 
+it also allows us to control the output that it generates 
+
+if we don't use the export keyword anywhere, TS just considers all of our code to be in the same scope(the global scope)
+so we will have trouble to write variable/function of same name in different file.
+
+The moment we add export keyword somewhere, TS will now assume we work in a module
+
+--> Any JS file that has an export or top level await is considered a module
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
