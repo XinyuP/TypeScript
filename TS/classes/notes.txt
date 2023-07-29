@@ -1,0 +1,301 @@
+classes are templates for creating objects in JS
+
+They contain a few different important pieces which allow for creation 
+and extension of customized and nicely organized objects
+
+constructors
+class fields
+getters setters
+private fields
+static fields/methods
+inheritance 
+super()
+
+create patterns that describe objects
+property
+functionality
+
+what it looks like, what can it do 
+
+we can instantiate instances of the class over and over
+
+
+It is different from TypeScript interface, type alias
+interface, type alias only describe the shape of some object
+
+we don't make anything using those types
+we don't instantiate something from a type
+
+but with classes, we can create an object from that pattern 
+
+
+----------------------------------------------------------
+
+constructors:
+
+class Player {
+    // we don't have to define a constructor
+    // we can only define constructor once
+    // it has to be called constructor
+    // constructor will automatically be called
+    constructor(first, last) {
+        this.first = first;
+        this.last = last;
+    }
+    // every time we instantiate a new instance of this class, JS behind the scenes calls this constructor function
+    // we don't execute constructor manually, whenever we instantiate a new player, instantiate is automatically called 
+
+
+}
+
+const player1 = new Player("blaire", "pang");
+const player2 = new Player("charlie", "brown");
+
+
+
+----------------------------------------------------------
+
+class fields:
+
+In any object-oriented programming language, classes can have private and public fields. 
+Fields are nothing but variables that hold the information. 
+There are two types of fields in an object-oriented programming language 
+i.e, instance fields and static fields
+
+
+Private Instance fields: By default, all the properties of a Class are public and can be 
+modified outside the class. So, in order to declare a private class field, 
+we need to use a # prefix.
+
+class IncrementCounter {
+ 
+    // Private variable
+    #value = 0;
+ 
+    // Public variable
+    Count = 0;
+ 
+    Increment() {
+        this.#value++;
+    }
+}
+ 
+const counter = new IncrementCounter();
+ 
+// Raises an error
+console.log(counter.#value);
+ 
+// Calling the increment function
+counter.increment();
+ 
+// Printing the private variable value
+console.log(counter.#value);
+
+
+----------------------------------------------------------
+
+getters and setters
+
+// getter
+get fullName() {
+    return `${this.first} ${this.last}`
+}
+
+// setter
+set score(newScore) {
+    if (newScore < 0) {
+        throw new Error('Score must be positive!');
+    }
+    this.#score = newScore;
+}
+
+----------------------------------------------------------
+
+"static" 
+
+put in front of a property or method
+
+--> tell JS that this property or method exists on the class itself and is not 
+gonna exist on each individual instance 
+
+
+** allow us to group functionality in with the class that doesn't have anything to do with 
+a particular instance, but still maybe has to do with the class itself
+often will be some creation method or helper that will create a new instance or multiple instances for you 
+
+
+
+--------------------------------------------------------------------
+
+inheritance 
+
+class can inherit from some parent class
+share functionality with another class
+
+class AdminPlayer extends Player {
+    isAdmin = true;
+}
+
+const admin = new AdminPlayer();
+
+---------------------------------------------------------------------
+
+super() 
+
+
+
+------------------------------------------------------------
+------------------- index.js -------------------------------
+------------------------------------------------------------
+
+class Player {
+	// --------- static ----------- //
+	static description = 'Player In The Game';
+	// this will not exist on individual instances
+	// only exist on the player class
+	static randdomPlayer() {
+		return new Player('Tony', 'Robert');
+	}
+
+	// --------- field ------------ //
+	// on every instance of player:
+	#score = 0; // private --> only usable inside of the Player class
+	#numLives = 10;
+	// syntactic sugar
+	// only allow values that are hard coded
+
+	// ------------constructor --------//
+	// we don't have to define a constructor
+	// we can only define constructor once
+	// it has to be called constructor
+	// constructor will automatically be called
+	constructor(first, last) {
+		this.first = first;
+		this.last = last;
+		this.#secret();
+		// this.score = 0;
+		// this.numLives = 10;
+	}
+	// every time we instantiate a new instance of this class, JS behind the scenes calls this constructor function
+	// we don't execute constructor manually, whenever we instantiate a new player, instantiate is automatically called
+
+	//-------- getter ------------//
+	get fullName() {
+		return `${this.first} ${this.last}`;
+	}
+
+	// getScore() {
+	// 	return this.#score;
+	// }
+	get score() {
+		return this.#score;
+	}
+
+	//------- setter -------------//
+	set score(newScore) {
+		if (newScore < 0) {
+			throw new Error('Score must be positive!');
+		}
+		this.#score = newScore;
+	}
+
+	// updateScore(newScore) {
+	//     this.#score = newScore;
+	// }
+
+	set fullName(newName) {
+		const [first, last] = newName.split(' ');
+		this.first = first;
+		this.last = last;
+	}
+
+	//----------------------------//
+
+	taunt() {
+		console.log('BOOYAH!');
+	}
+
+	loseLife() {
+		this.#numLives -= 1;
+	}
+
+	#secret() {
+		// private method
+		console.log('secret!!');
+	}
+}
+
+// ---------- inheritance ---------- //
+// extends from parent class
+// we can add on different property
+class AdminPlayer extends Player {
+	// Must call super constructor in derived class before accessing 'this'
+	// or returning from derived constructor
+	constructor(first, last, powers) {
+		super(first, last);
+		this.powers = powers;
+	}
+	isAdmin = true;
+}
+
+const admin = new AdminPlayer('blaire', 'pang'); 
+const admin2 = new AdminPlayer(['delete', 'restore']); // wrong: first: ['delete', 'restore']
+const admin3 = new AdminPlayer('blaire', 'pang', ['delete', 'restore']);
+
+
+
+
+
+
+
+
+
+
+
+/*
+const player1 = new Player('blaire', 'pang');
+console.log(player1.numLives);
+player1.loseLife();
+console.log(player1.numLives);
+player1.score = 11;
+// console.log(player1.getScore())
+console.log(player1.score);
+
+// player1.score = -10 // Uncaught Error: Score must be positive!
+
+const player2 = new Player('charlie', 'brown');
+console.log(player2.fullName); // behave like there is a property called fullName --> but it actually computed
+player2.fullName = 'Taylor Swift';
+console.log(player2.fullName);
+*/
+
+
+
+
+------------------------------------------------------------
+------------------- index.js -------------------------------
+------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
